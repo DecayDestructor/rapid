@@ -8,7 +8,7 @@ const resourceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    title:{
+    title: {
       type: String,
       required: true,
       unique: true,
@@ -18,47 +18,44 @@ const resourceSchema = new mongoose.Schema(
       required: true,
     },
     description: {
-        type: String,
-        default: '',
-
+      type: String,
+      default: '',
     },
     difficulty: {
-        type: Number,
-        default: 0,
+      type: Number,
+      default: 0,
     },
     contentType: {
-        type: String,
+      type: String,
       required: true,
-  },
-  notes: {  
-    type: String,
-    default: '',
+    },
+    notes: {
+      type: String,
+      default: '',
+    },
+    rating: {
+      type: Number,
+      default: 0,
+    },
 
-  },
-rating: {
-    type: Number,
-    default: 0,
-},
+    review: {
+      type: String,
+      default: '',
+    },
 
-  review:{
-    type: String,
-    default: '',
-  },
-
-  complete:{
-    type: Boolean,
-    default: false,
-  },
-  link:{
-    type: String,
-    default: '',
-  }
+    complete: {
+      type: Boolean,
+      default: false,
+    },
+    link: {
+      type: String,
+      default: '',
+    },
   },
   {
     autoIndex: true,
   }
 )
-
 
 const resModel = mongoose.model('Resource', resourceSchema)
 export default resModel
