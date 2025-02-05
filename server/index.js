@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import cors from 'cors'
 const app = express()
-
+import userRouter from './routes/userRoute.js'
 dotenv.config()
 app.use(express.json())
 app.use(cors())
@@ -16,6 +16,7 @@ mongoose
   })
   .catch((err) => console.error(' could not connect to db' + err))
 
+app.use('/user', userRouter)
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
