@@ -33,6 +33,31 @@ router.post('/createResource', async (req, res) =>{
     }
 })
 
+// route to update resource
+router.put('/updateResource', async (req, res) => {
+    const { title, userId, contentType, link, subject,description } = req.body
+    try {
+        const updatedResource = await resModel.findByIdAndUpdate(req.body.id, { title, userId, contentType, link, subject,description }, { new: true })
+        if (!updatedResource) return res.status(404).json({ message: 'Resource not found' })
+        res.json(updatedResource)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
+//route to delete a resource
+
+router.delete('/deleteResource/:id', async (req, res) => {
+    try {
+        const deletedResource = await resModel.findByIdAndDelete(req.params.id)
+        if (!deletedResource) return res.status(404).json({ message: 'Resource not found' })
+        res.json({ message: 'Resource deleted successfully' })
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
+
 
 
 
