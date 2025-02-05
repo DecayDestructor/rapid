@@ -8,6 +8,11 @@ const resourceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    title:{
+      type: String,
+      required: true,
+      unique: true,
+    },
     subject: {
       type: String,
       required: true,
@@ -40,7 +45,14 @@ rating: {
     default: '',
   },
 
-  complete
+  complete:{
+    type: Boolean,
+    default: false,
+  },
+  link:{
+    type: String,
+    default: '',
+  }
   },
   {
     autoIndex: true,
@@ -48,5 +60,5 @@ rating: {
 )
 
 
-const resModel = mongoose.model('User', resourceSchema)
+const resModel = mongoose.model('Resource', resourceSchema)
 export default resModel
